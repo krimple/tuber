@@ -1,0 +1,13 @@
+<div [formGroup]="form">
+  Search: <input formControlName="searchTerm">
+</div>
+<hr>
+<div class="container">
+  <div *ngFor="let video of videos">
+    <div class="content" (click)="watch(video)">
+      <div class="title" [innerText]="video.title"></div>
+      <div class="preview"><img [src]="video.imagePreview.href"/></div>
+      <div class="description" [innerHTML]="video.description"></div>
+    </div>
+  </div>
+
