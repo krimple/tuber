@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
+import { YoutubePlayerMiniModule } from 'ng2-youtube-player-mini';
 import { PlayerComponent } from './player.component';
 
 describe('PlayerComponent', () => {
@@ -8,6 +9,7 @@ describe('PlayerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ YoutubePlayerMiniModule, RouterTestingModule ],
       declarations: [ PlayerComponent ]
     })
     .compileComponents();
