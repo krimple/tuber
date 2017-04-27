@@ -10,7 +10,6 @@ import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/share';
 import { Router } from '@angular/router';
 @Component({
-  selector: 'app-video-list',
   templateUrl: 'video-list.component.html',
   styleUrls: ['video-list.component.css']
 })
@@ -30,11 +29,11 @@ export class VideoListComponent implements OnInit {
   ngOnInit() {
     const self = this;
     this.form = this.formBuilder.group({
-      searchTerm: ''
+      searchTerm: 'Cat'
     });
     this.youTubeService.playlist('cats')
       .then((videos: Video[]) => {
-        this.videos = videos;
+        self.videos = videos;
       })
       .then(() => {
         self.form.get('searchTerm')
@@ -42,7 +41,7 @@ export class VideoListComponent implements OnInit {
           .debounceTime(1000)
           .distinctUntilChanged()
           .subscribe((data) => {
-            this.youTubeService.playlist(data)
+            self.youTubeService.playlist(data)
               .then((videos: Video[]) => {
                 self.videos = videos;
               });

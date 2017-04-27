@@ -1,6 +1,6 @@
-<div [formGroup]="form">
+<form [formGroup]="form">
   Search: <input formControlName="searchTerm">
-</div>
+</form>
 <hr>
 <div class="container">
   <div *ngFor="let video of videos">
@@ -10,4 +10,5 @@
       <div class="description" [innerHTML]="video.description"></div>
     </div>
   </div>
+</div>
 

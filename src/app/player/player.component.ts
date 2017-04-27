@@ -2,9 +2,8 @@ import { Component, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-player',
   template: `
-    <a href="#" routerLink="/video-list">Back..</a><br/>
+    <a [routerLink]="['/video-list']">Back..</a><br/>
     <hr/>
     Video: {{ key }} <br/>
     <youtube-player [playerId]='"player"' 
@@ -19,12 +18,18 @@ export class PlayerComponent implements OnInit, OnChanges {
 
   constructor(private details: ActivatedRoute) { }
 
-  ngOnInit() { this.watch(); }
+  ngOnInit() { 
+    console.log(`Created instance of player component`);
+    this.watch(); }
 
   ngOnChanges(changes: any) { this.watch(); }
 
   watch() {
     this.key = this.details.snapshot.params['videoId'];
     console.log(`Key is ${this.key}`);
+  }
+
+  ngOnDestroy() {
+    console.log(`destroyed instance of player component`);
   }
 }
